@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+   <head>
+      <meta charset="UTF-8">
+      <title>Assign Task</title>
+<!--      <link rel="stylesheet" href="{% static 'assign_task/style.css' %}">-->
+      <!-- bootstrap cdn link -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <style>
+   *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #fff;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+h2{
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: #4070f4;
+}
+.text{
+  text-align: justify;
+  padding: 40px 80px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+ /* Media query for mobile devices */
+      @media only screen and (max-width: 768px) {
+         nav .nav-content {
+            padding: 10px;
+         }
+         nav .logo a {
+            font-size: 25px;
+         }
+         .home {
+            padding-top: 120px; /* Adjust spacing */
+         }
+         .text {
+            padding: 20px; /* Adjust padding */
+         }
+         .mail-form {
+            margin-top: 50px; /* Adjust margin */
+         }
+         /* Additional responsive styles if needed */
+      }
+  </style>
+   </head>
+   <body style="background-color: #fff;">
+   <script>
+    {% for m in messages %}
+          alert('{{ m }}');
+    {% endfor %}
+  </script>
+   <nav style="background-color: #4E9255;">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="/admin_index/">Assign Task</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/admin_index/">Home</a></li>
+        <li><a href="/ass_task/">Creator</a></li>
+        <li><a href="/ass_task/">Editor</a></li>
+<!--        <li><a href="#">Services</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+      </ul>
+    </div>
+  </nav>
+      <div class="container" style="margin-top: 200px;">
+         <div class="row">
+            <div class="col-md-4 offset-md-4 mail-form">
+               <h2 class="text-center">
+                  Assign Task
+               </h2>
+               <p class="text-center">
+               </p>
+
+               <form action="/ass_task/" method="POST">
+                   {% csrf_token %}
+                  <div class="form-group">
+                     <input class="form-control" name="email" type="email" placeholder="Enter email here">
+                  </div>
+                  <div class="form-group">
+                     <input class="form-control" name="name" type="text" placeholder="Enter Subject here">
+                  </div>
+                  <div class="form-group">
+                      <input class="form-control" name="message" type="text" placeholder="Enter Message Here">
+                  </div>
+                  <div class="form-group">
+                     <input class="form-control button btn-primary" type="submit" name="send" value="Send" placeholder="Subject">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

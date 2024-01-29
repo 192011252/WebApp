@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+<head>
+    <title>Login</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="{% static 'login.css' %}" type="text/css" media="all" />
+<style>
+        .btn {
+    align-items: center;
+    background: #4E9255;
+    border-radius: 6px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    padding: 15px 45px;
+    transition: 0.2s;
+    font-weight: 600;
+    </style>
+
+    <!-- fontawesome v5 -->
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<script>
+    {% for m in messages %}
+          alert('{{ m }}');
+    {% endfor %}
+  </script>
+    <section class="forms">
+        <div class="container">
+            <!-- logo -->
+            <div class="logo">
+                <a class="brand-logo" href="index.html">Emagazines</a>
+            </div>
+            <!-- //logo -->
+            <div class="forms-grid">
+
+                <!-- login -->
+                <div class="login">
+                    <img src="{% static 'mag.png' %}" alt="">
+
+                    <form action="/editor_login/" method="post" class="login-form">
+                         {% csrf_token %}
+
+                        <fieldset>
+                            <div class="form">
+                                <div class="form-row">
+                                    <span class="fas fa-user"></span>
+                                    <label class="form-label" for="input">Email/Phone No</label>
+                                    <input type="text" name="email" class="form-text">
+                                </div>
+                                <div class="form-row">
+                                    <span class="fas fa-eye"></span>
+                                    <label class="form-label" for="input">Password</label>
+                                    <input type="password" name="password" class="form-text">
+                                </div>
+                                <div class="form-row bottom">
+                                    <div class="form-check">
+
+                                        <label for="remenber"> Do not have account?</label>
+                                    </div>
+                                    <a href="/editor_signup/" class="forgot">Signup</a>
+                                </div>
+                                <div class="form-row button-login">
+                                    <button class="btn btn-login">Login <span
+                                            class="fas fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- //login -->
+
+
+    </section>
+
+</body>
+
+</html>

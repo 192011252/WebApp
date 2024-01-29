@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table Registration Form</title>
+  <link rel="stylesheet" href="{% static 'table.css'%}">
+  <style>
+    /* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #4E9255;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #0E2431;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+h2{
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: #4070f4;
+}
+.text{
+  text-align: justify;
+  padding: 40px 80px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
+</head>
+
+<body >
+<nav style="background-color:#4E9255">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="/creator_index/">Add Details</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/creator_index/">Home</a></li>
+        <li><a href="/ad_img/">Add details</a></li>
+        <li><a href="/article/">magazine</a></li>
+<!--        <li><a href="#">Services</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <script>
+  let nav = document.querySelector("nav");
+    window.onscroll = function() {
+      if(document.documentElement.scrollTop > 20){
+        nav.classList.add("sticky");
+      }else {
+        nav.classList.remove("sticky");
+      }
+    }
+  </script>
+<script>
+    {% for m in messages %}
+          alert('{{ m }}');
+    {% endfor %}
+  </script>
+  <section class="w3l-simple-contact-form2">
+    <div class="section-gap">
+      <div class="wrapper">
+        <div class="form-inner-cont">
+          <form action="/c_table/" method="post" enctype="multipart/form-data" class="signin-form">
+            {% csrf_token %}
+            <h3>Create Content</h3>
+            <div class="form-input">
+              <label for="w3lName">Event</label>
+              <input type="text" name="event" id="w3lName" placeholder="Enter Event Name" />
+            </div>
+            <div class="form-input">
+              <label for="w3lSender">Venue</label>
+              <input type="text" name="venue" id="w3lSender" placeholder="Enter Venue" required />
+            </div>
+            <div class="form-input">
+              <label for="w3lSubject">Date</label>
+              <input type="date" name="event_date" id="w3lSubject" placeholder="Enter date" required />
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">Guests</label>
+              <input type="text" name="guests" id="w3lMessage" placeholder="Enter guests name" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">External participants</label>
+              <input type="text" name="extpart" placeholder="Type your query here" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">internal participants</label>
+              <input type="text" name="intpart" id="w3lMessage" placeholder="Type your query here" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">speakers points</label>
+              <input type="text" name="spepoint" id="w3lMessage" placeholder="Type your query here" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">highlights of event</label>
+              <input type="text" name="highofthevent" id="w3lMessage" placeholder="Type your query here" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">Number of words</label>
+              <input type="text" name="noofwords" id="w3lMessage" placeholder="Enter number of words" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">No.of Images</label>
+              <input type="text" name="NoofIma" id="w3lMessage" placeholder="Type number of images" required="">
+            </div>
+            <div class="form-input">
+              <label for="w3lMessage">Upload Image</label>
+              <input type="file" name="UpIma" id="w3lMessage" placeholder="Type your query here" required="">
+              <input type="file" name="UpIma1" id="w3lMessage" placeholder="Type your query here">
+              <input type="file" name="UpIma2" id="w3lMessage" placeholder="Type your query here">
+            </div>
+            <button class="btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /simple-contact-form2 -->
+</body>
+
+</html>

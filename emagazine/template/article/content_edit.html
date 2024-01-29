@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text to Speech Converter</title>
+  <!-- Import Google font - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .container {
+      position: relative;
+      max-width: 850px;
+      width: 100%;
+      background: #4E9255;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      font-size: 18px;
+      color: #fff;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    textarea {
+      width: 750px;
+      height: 380px;
+      border-radius: 8px;
+      margin: 20px 0;
+      padding: 10px 15px;
+      resize: none;
+      outline: none;
+      border: 1px solid #aaa;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      border: none;
+      border-radius: 8px;
+      color: #333;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #4070f4;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.querySelector('form');
+
+      form.addEventListener('submit', function (event) {
+        var textarea = document.querySelector('textarea');
+        var content = textarea.value.trim(); // Trim to remove leading and trailing whitespaces
+
+        if (content === '') {
+          alert('Text cannot be empty!');
+          event.preventDefault(); // Prevent the form submission
+        }
+      });
+    });
+  </script>
+
+  <div class="container" style="width:800px; height:580px;">
+    <form action="/edit_s/" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{c.id}}">
+      <header>Content Editor</header>
+      <textarea name="cont" placeholder="Enter Content Here...">{{c.content}}</textarea>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

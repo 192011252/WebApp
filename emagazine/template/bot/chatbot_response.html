@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHATBOT RESPONSE</title>
+    <link rel="stylesheet" href="{% static 'allow_users/side_bar/style.css' %}" />
+	  <link rel="stylesheet" href="{% static 'allow_users/css/style.css' %}">
+	  <link rel="stylesheet" href="{% static 'allow_users/delete_button/css/style.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'bot/style.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style>
+      .element-selector {
+      height: 200px; /* set the height of the element */
+      overflow-y: scroll; /* add a vertical scrollbar when the content overflows the element */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: white;
+      }
+      .container {
+        width: 410px;
+        /* padding: 20px; */
+      }
+      .inputbox {
+        border-radius: 4px;
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        box-shadow: 0 25px 30px rgba(0, 0, 0, 0.1);
+      }
+      .inputbox input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 18px;
+      }
+      button {
+        cursor: pointer;
+        font-size: 17px;
+        padding: 0.5em 1.6em;
+        border: transparent;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        background: dblueodger;
+        color: white;
+        border-radius: 4px;
+      }
+
+      button:hover {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          90deg,
+          rgba(30, 144, 255, 1) 0%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      }
+
+      button:active {
+        transform: translate(0em, 0.2em);
+      }
+      #result {
+        width: 600px;
+        height: 100%;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 25px 30px rgba(0, 0, 0, 0.1);
+        padding: 60px;
+        margin: 30px 0;
+        /* display: none; */
+      }
+    </style>
+    <style>
+    /* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #0E2431;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+h2{
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: #4070f4;
+}
+.text{
+  text-align: justify;
+  padding: 40px 80px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
+    <style>
+      /* CSS */
+.button-19 {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+    </style>
+  </head>
+  <body style="background-image: url({% static 'robot/images/robot-1.jpg' %}); background-size: cover;">
+   <script>
+{% for m in messages %}
+      alert('{{ m }}');
+{% endfor %}
+  </script>
+<nav style="background-color:#4E9255">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="/creator_index/">Add Details</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/creator_index/">Home</a></li>
+        <li><a href="/ad_img/">Add details</a></li>
+        <li><a href="/article/">magazine</a></li>
+<!--        <li><a href="#">Services</a></li>-->
+<!--        <li><a href="#">Contact</a></li>-->
+      </ul>
+    </div>
+  </nav>
+    <div class="container" >
+      <div class="inputbox" style="background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );">
+        <form method="post">
+          {% csrf_token %}
+        <input type="text" placeholder="Enter your question" name="prom" value="{{ prom }}" id="question" style="background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );"/>
+        </form>
+      </div>
+    </div>
+    <div  id="result" style="background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );">
+        <p class="element-selector" id="resulttext">
+           {{ response }}
+        </p>
+      <a href="/ss/">
+        <button class="button-19" role="button">Next</button>
+      </a>
+
+
+
+    </div>
+    <script src="{% static 'bot/script.js' %}"></script>
+  <script src="{% static 'allow_users/delete_button/css/app.js' %}"></script>
+	<script src="{% static 'allow_users/js/jquery.min.js' %}"></script>
+  <script src="{% static 'allow_users/js/popper.js' %}"></script>
+  <script src="{% static 'allow_users/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'allow_users/js/main.js' %}"></script>
+
+    <script>
+      const btn_menu = document.querySelector(".btn-menu");
+      const side_bar = document.querySelector(".sidebar");
+
+      btn_menu.addEventListener("click", function () {
+        side_bar.classList.toggle("expand");
+        changebtn();
+      });
+
+      function changebtn() {
+        if (side_bar.classList.contains("expand")) {
+          btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else {
+          btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+      }
+    </script>
+  </body>
+</html>

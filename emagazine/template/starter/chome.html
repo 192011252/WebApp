@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>E-Magazine</title>
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+
+  </head>
+  <body >
+<!--header-->
+<script>
+    {% for m in messages %}
+          alert('{{ m }}');
+    {% endfor %}
+  </script>
+<header id="site-header" class="fixed-top" style="background-color:#4E9255;">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+      <h1>
+        <a class="navbar-brand" href="/creator_index/">
+        CREATOR <span class="logo">Page</span></a>
+      </h1>
+
+<!--        <a class="navbar-brand" href="#index.html">-->
+<!--            <img src="" alt="Your logo" title="Your logo" style="height:35px;" />-->
+<!--        </a>-->
+      <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+        </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-lg-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href="/c_table/">Add Details</a>
+          </li>
+          <li class="nav-item @@courses__active">
+            <a class="nav-link" href="/article/">Magazine</a>
+          </li>
+            <li class="nav-item @@contact__active">
+            <a class="nav-link" href="/edit_h/">Edit Content</a>
+          </li>
+
+        </ul>
+
+
+
+        <div class="top-quote mr-lg-2 text-center">
+
+            <a href="/admin_logout/" class="btn login mr-2"></span> Logout</a>
+        </div>
+
+      </div>
+
+<!--      &lt;!&ndash; toggle switch for light and dark theme &ndash;&gt;-->
+<!--      <div class="mobile-position">-->
+<!--        <nav class="navigation">-->
+<!--          <div class="theme-switch-wrapper">-->
+<!--            <label class="theme-switch" for="checkbox">-->
+<!--              <input type="checkbox" id="checkbox">-->
+<!--              <div class="mode-container py-1">-->
+<!--                <i class="gg-sun"></i>-->
+<!--                <i class="gg-moon"></i>-->
+<!--              </div>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </nav>-->
+<!--      </div>-->
+      <!-- //toggle switch for light and dark theme -->
+        <form>
+<input class="form-control mr-sm-2 form-inline my-2 my-lg-0 ml-lg-3" id="searchInput" oninput="filterContent()" type="search" placeholder="Search" aria-label="Search">
+                </form>
+
+
+    </nav>
+  </div>
+</header>
+<!--/header-->
+<!-- main-slider -->
+
+<!-- /main-slider -->
+
+<!-- Input for search -->
+
+<div class="w3l-homeblock3 py-5" style="background-color:white;">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <h5 class="title-small text-center mb-1">E-Magazine</h5>
+        <h3 class="title-big text-center mb-sm-5 mb-4" style="color:#4E9255;">Latest <span>Magazine</span></h3>
+        <div class="row top-pics">
+            {% for i in d %}
+            <div class="col-md-6 item"> <!-- Add 'item' class for each filtered item -->
+                <div class="top-pic1" style="background-image: url('{{ i.UpIma.url }}');">
+                    <div class="card-body blog-details">
+                        <a href="/indi/{{i.id}}" class="blog-desc">{{ i.event }}</a>
+                        <div class="author align-items-center">
+                            <img src="{{ i.UpIma.url }}" alt="" class="img-fluid rounded-circle" />
+                            <ul class="blog-meta">
+                                <li>
+                                    <a href="/indi/{{i.id}}" class="high">{{ i.highofthevent }}</a>
+                                </li>
+                                <li class="meta-item blog-lesson">
+                                    <span class="meta-value"> Speaker</span> <span class="meta-value ml-2">{{ i.spepoint }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to filter the content based on search input
+    function filterContent() {
+        const filterText = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('.item');
+
+        items.forEach((item) => {
+            const title = item.querySelector('.blog-desc').textContent.toLowerCase();
+            const speaker = item.querySelector('.blog-lesson .ml-2').textContent.toLowerCase();
+            const highEvent = item.querySelector('.high').textContent.toLowerCase();
+
+            if (title.includes(filterText) || speaker.includes(filterText) || highEvent.includes(filterText)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+<!-- Template JavaScript -->
+<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+
+<script src="{% static 'assets/js/theme-change.js' %}"></script>
+
+<!-- stats number counter-->
+<script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countup.js' %}"></script>
+<script>
+  $('.counter').countUp();
+</script>
+<!-- //stats number counter -->
+
+<script src="{% static 'assets/js/owl.carousel.js' %}"></script>
+<!-- script for banner slider-->
+<script>
+  $(document).ready(function () {
+    $('.owl-one').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: false,
+      dots: false,
+      responsiveClass: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 1000,
+      autoplayHoverPause: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        480: {
+          items: 1
+        },
+        667: {
+          items: 1
+        },
+        1000: {
+          items: 1,
+          nav: true
+        }
+      }
+    })
+  })
+</script>
+<!-- //script -->
+
+<!-- script for tesimonials carousel slider -->
+<script>
+  $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: false,
+          responsiveClass: true,
+          responsive: {
+              0: {
+                  items: 1,
+                  nav: false
+              },
+              768: {
+                  items: 2,
+                  nav: false
+              },
+              1000: {
+                  items: 3,
+                  nav: false,
+                  loop: false
+              }
+          }
+      })
+  })
+</script>
+<!-- //script for tesimonials carousel slider -->
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--/MENU-JS-->
+<script>
+  $(window).on("scroll", function () {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 80) {
+      $("#site-header").addClass("nav-fixed");
+    } else {
+      $("#site-header").removeClass("nav-fixed");
+    }
+  });
+
+  //Main navigation Active Class Add Remove
+  $(".navbar-toggler").on("click", function () {
+    $("header").toggleClass("active");
+  });
+  $(document).on("ready", function () {
+    if ($(window).width() > 991) {
+      $("header").removeClass("active");
+    }
+    $(window).on("resize", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+    });
+  });
+</script>
+<!--//MENU-JS-->
+
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+
+</body>
+
+</html>

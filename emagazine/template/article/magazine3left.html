@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Magazine3</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'mag3/img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'mag3/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'mag3/css/style.css' %}" rel="stylesheet">
+    <style>
+      /* Your existing styles */
+
+      /* Add a new class for hiding content on scroll */
+      .hide-on-scroll {
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .content-hidden {
+        transform: translateY(-100%);
+      }
+    </style>
+       <style>
+    /* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #4070f4;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #0E2431;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+
+    <!-- Navbar Start -->
+   <header id="site-header" class="fixed-top">
+
+  <nav style="background-color:#4E9255">
+        <div class="nav-content">
+      <div class="logo">
+        <a href="/creator_index/">Magazine</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/creator_index/">Back</a></li>
+        <li><a href="/download_pdf/{{gpt_content.id}}/" target="_blank" class="btn btn-primary">Download PDF</a></li>
+      </ul>
+    </div>
+  </nav>
+      </header>
+    <!-- Navbar End -->
+
+
+    <br><br>
+    <br><br>
+
+
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid" style="width:1200px;justify-content:center; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- News Detail Start -->
+                    <div class="position-relative mb-3">
+                        <img class="img-fluid w-100" src="{{ content.UpIma.url }}" style="object-fit: cover;">
+                        <div class="bg-white border border-top-0 p-4">
+                            <div class="mb-3">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="">{{content.event}}</a>
+                                <a class="text-body" href="">Jan 01, 2045</a>
+                            </div>
+                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{content.highofthevent}}   <img class="img-fluid w-50 float-right mr-4 mb-2"  src="{{ content.UpIma1.url }}"></h1>
+                            <p style="text-align: justify;"><img class="img-fluid w-50 float-left mr-4 mb-2" src="{{ content.UpIma2.url }}">
+
+
+{{gpt_content.content}}
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <!-- News Detail End -->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- News With Sidebar End -->
+
+
+
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'mag3/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'mag3/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'mag3/js/main.js' %}"></script>
+</body>
+
+</html>

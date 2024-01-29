@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Single Magazine</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'mag1/css/style-starter.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+  </head>
+  <body id="home">
+
+
+
+<script src="{% static 'mag1/js/jquery-3.3.1.min.js' %}"></script>
+
+<script src="{% static 'mag1/js/bootstrap.min.js' %}"></script>
+
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+
+<!--two image-->
+<section class="w3l-covers-18">
+        <div class="covers-main editContent">
+            <div class="container">
+                <div class="gallery-image row" >
+                  <div class="column color-2 editContentc col-lg-4 ">
+                    <div>
+                    <h4 class=" editContent">{{content.event}}</h4>
+                        <h5 class=" editContent">{{content.highofthevent}}</h5>
+
+                         <h6 class=" editContent">Guest - {{content.guests}}</h6>
+                        <br>
+                    <p class="para editContent" style="width:700px;text-align: justify;">  {{gpt_content.content}}</p>
+                         <br><br>
+                    <img src="{{ content.UpIma.url }}" alt="product" class="img-responsive ">
+                  </div>
+            </div>
+
+                  <div class="img-box col-lg-4 col-md-6">
+
+                  </div>
+
+                  <div class="img-box col-lg-4 col-md-6" >
+
+                    <img src="{{ content.UpIma1.url }}" alt="product" class="img-responsive ">
+
+                  </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--end two image-->
+
+
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-long-arrow-up"></span>
+</button>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function () {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("movetop").style.display = "block";
+		} else {
+			document.getElementById("movetop").style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+<!-- /move top -->
+
+</body>
+
+</html>

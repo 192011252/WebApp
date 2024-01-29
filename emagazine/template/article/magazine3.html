@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Single Magazine</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'mag1/css/style-starter.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+        <style>
+    /* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #4070f4;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+h2{
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: #4070f4;
+}
+.text{
+  text-align: justify;
+  padding: 40px 80px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
+  </head>
+  <body id="home">
+  <header id="site-header" class="fixed-top">
+
+<nav style="background-color:#4E9255">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="/creator_index/">Add Details</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/creator_index/">Home</a></li>
+        <li><a href="/ad_img/">Add details</a></li>
+        <li><a href="/article/">magazine</a></li>
+<!--        <li><a href="#">Services</a></li>-->
+        <li><a href="/download_pdf/{{gpt_content.id}}/" target="_blank" class="btn btn-primary">Download PDF</a></li>
+
+      </ul>
+    </div>
+  </nav>
+       </header>
+ <script>
+  let nav = document.querySelector("nav");
+    window.onscroll = function() {
+      if(document.documentElement.scrollTop > 20){
+        nav.classList.add("sticky");
+      }else {
+        nav.classList.remove("sticky");
+      }
+    }
+  </script>
+<script src="{% static 'mag1/js/jquery-3.3.1.min.js' %}"></script>
+
+<script src="{% static 'mag1/js/bootstrap.min.js' %}"></script>
+
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+
+<br><br><br>
+
+
+
+<!--three image-->
+<section class="w3l-call-to-action_9">
+    <div class="call-w3 editContent">
+        <div class="container">
+            <div class="grids">
+                    <div class="grids-content row text-center">
+
+                        <div class="column col-lg-4 col-md-6 col-sm-6 back-image editContent p-sm-0">
+                            <img src="{{ content.UpIma.url }}" style="height:300px;"  alt="product" class="img-responsive rounded-0">
+                        </div>
+
+                        <div class="column col-lg-4 col-md-6 col-sm-6 color-2 editContent">
+                            <div>
+                            <h4><a href="about.html" class=" editContent">{{content.event}}</a></h4>
+                            <p class="para editContent">{{content.highofthevent}}</p>
+                            </div>
+
+                            <p>Guest - {{content.guests}}</p>
+                        </div>
+                          <br>  <br>
+                        <div class="column col-lg-4 col-md-6 col-sm-6 back-image2 editContent p-sm-0">
+                            <img src="{{ content.UpIma1.url }}" style="height:300px;"  alt="product" class="img-responsive rounded-0 ">
+                        </div>
+
+                          <p class="para editContent" style="text-align: justify;">{{gpt_content.content}}</p>
+
+
+                        <div class="column col-lg-4 col-md-6 col-sm-6 back-image editContent p-sm-0"  style="margin-left:35%;">
+                                  <br><br>
+                            <img src="{{ content.UpIma2.url }}" style="height:300px;" alt="product" class="img-responsive rounded-0">
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+<!--end three image-->
+
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-long-arrow-up"></span>
+</button>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function () {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById("movetop").style.display = "block";
+		} else {
+			document.getElementById("movetop").style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+<!-- /move top -->
+
+</body>
+
+</html>

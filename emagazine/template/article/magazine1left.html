@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Single Magazine</title>
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'mag1/css/style-starter.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+       <style>
+      /* Your existing styles */
+
+      /* Add a new class for hiding content on scroll */
+      .hide-on-scroll {
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .content-hidden {
+        transform: translateY(-100%);
+      }
+    </style>
+       <style>
+    /* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+nav.sticky{
+  padding: 15px 20px;
+  background: #4070f4;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #fff;
+}
+nav.sticky .logo a{
+  color: #fff;
+}
+.nav-content .nav-links{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 8px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #0E2431;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #4070f4;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0E2431;
+}
+.home{
+  height: 100vh;
+  width: 100%;
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+  </style>
+  </head>
+  <body id="home" >
+  <header id="site-header" class="fixed-top">
+
+  <nav style="background-color:#4E9255">
+        <div class="nav-content">
+      <div class="logo">
+        <a href="/creator_index/">Magazine</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/creator_index/">Back</a></li>
+        <li><a href="/download_pdf/{{gpt_content.id}}/" target="_blank" class="btn btn-primary">Download PDF</a></li>
+      </ul>
+    </div>
+  </nav>
+      </header>
+    <br><br><br><br>
+<script src="{% static 'mag1/js/jquery-3.3.1.min.js' %}"></script>
+
+<script src="{% static 'mag1/js/bootstrap.min.js' %}"></script>
+
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--left one image-->
+<section class="w3l-specification-6" style="height:1200px;">
+
+    <div class="specification-layout editContent">
+        <div class="container">
+            <div class=" row">
+
+                <div class="col-xl-6 about-right-faq align-self">
+                    <div class="col-xl-6 back-image">
+                    <img src="{{ content.UpIma.url }}" alt="Image" class="img-responsive ">
+                </div>
+                    <h3 class="title-big"><a href="about.html">{{content.event}}</a></h3>
+                    <h5 class="title-big"><a href="about.html">{{content.highofthevent}}</a></h5>
+
+                    <p style="width:1200px; text-align: justify;">{{gpt_content.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--end left one image-->
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+	<span class="fa fa-long-arrow-up"></span>
+</button>
+
+
+
+<!-- /move top -->
+
+</body>
+
+</html>
